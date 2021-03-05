@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded = true;
     
     private Rigidbody rb;
+    public ParticleSystem sphereParticles;
     
     void Start()
     {
@@ -38,9 +39,11 @@ public class PlayerController : MonoBehaviour
         {
             GameObject GM = GameObject.Find("GrappleManager");
             GM.GetComponent<DrawLines>().stopGrappling();
+            other.gameObject.SetActive(false);
+            Instantiate(sphereParticles, other.gameObject.transform.position, other.gameObject.transform.rotation);
         }
     }
-    
+
     void OnCollisionExit(Collision other)
     {
         if (other.gameObject.tag == "Ground")

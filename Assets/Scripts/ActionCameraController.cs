@@ -14,7 +14,7 @@ public class ActionCameraController : MonoBehaviour
     public bool RotateAroundPlayer = true;
 
     public float MaxRotationSpeed = 4f;
-    public float RotationSpeedMulitplier = 1.5f;
+    public float RotationSpeedMulitplier = 2f;
     private float angleOfRotation;
     void Start()
     {
@@ -38,25 +38,12 @@ public class ActionCameraController : MonoBehaviour
             
             //Debug.Log(mouseMove);
 
-            if (mouseX > 0){
-                mouseX = Mathf.Min(mouseMove.x, MaxRotationSpeed);
-            }
-            else if(mouseX < 0) {
-                mouseX = Mathf.Max(mouseMove.x, -MaxRotationSpeed);
-            }  
             Quaternion camTurnAngleX = 
-                Quaternion.AngleAxis(mouseX, Vector3.up);
+                Quaternion.AngleAxis(mouseMove.x, Vector3.up);
 
-            if (mouseY > 0){
-                mouseY = Mathf.Min(mouseMove.y, MaxRotationSpeed);
-            }
-            else if(mouseY < 0) {
-                mouseY = Mathf.Max(mouseMove.y, -MaxRotationSpeed);
-            }
             Quaternion camTurnAngleY =  
-                Quaternion.AngleAxis(mouseY, transform.right);
+                Quaternion.AngleAxis(mouseMove.y, transform.right);
             
-
             //angleOfRotation += mouseY;
             float angle = transform.eulerAngles.x;
             //Debug.Log(transform.eulerAngles.x);

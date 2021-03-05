@@ -21,9 +21,11 @@ public class DrawLines : MonoBehaviour
     private Rigidbody PlayerRB;
     public Material[] SelectedMaterial;
     public Material[] UnselectedMaterial;
+    private GameObject LevelController;
     // Start is called before the first frame update
     void Start()
     {
+        LevelController = GameObject.Find("LevelController");
         //SpawnLineGenerator();
     }
 
@@ -97,6 +99,7 @@ public class DrawLines : MonoBehaviour
     }
     private void Shoot()
     {
+        LevelController.GetComponent<LevelController>().CheckLevelUpdate(lastObjectHit);
         if(newLineGen)
         {
             Destroy(newLineGen);
