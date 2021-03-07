@@ -12,7 +12,7 @@ public class DrawLines : MonoBehaviour
     public int rayLength;
     private GameObject newLineGen;
     private LineRenderer lRend;
-    public float range = 100f;
+    public float range = 1f;
     private GameObject lastObjectHit = null;
     private Vector3 grapplePoint;
     private Vector3 grappleDir;
@@ -22,6 +22,7 @@ public class DrawLines : MonoBehaviour
     public Material[] SelectedMaterial;
     public Material[] UnselectedMaterial;
     private GameObject LevelController;
+    private bool gameStarted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,22 +31,25 @@ public class DrawLines : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Vector3 retDir = reticalPosition.position - CameraTransform.position;
-        retDir.Normalize();
-        retDir = retDir * rayLength;
+        if(gameStarted)
+        {
+            Vector3 retDir = reticalPosition.position - CameraTransform.position;
+            retDir.Normalize();
+            retDir = retDir * rayLength;
 
-        DetectPossibleGrapple(retDir);
-        if(Input.GetButtonDown("Fire1") && lastObjectHit)
-        {
-            Shoot();
-            UseGrappleForce();
-            grappling = true;
-        }
-        if(grappling)
-        {
-            lRend.SetPosition(0, PlayerTransform.position);
+            DetectPossibleGrapple(retDir);
+            if(Input.GetButtonDown("Fire1") && lastObjectHit)
+            {
+                Shoot();
+                UseGrappleForce();
+                grappling = true;
+            }
+            if(grappling)
+            {
+                lRend.SetPosition(0, PlayerTransform.position);
+            }
         }
     }
     private void DetectPossibleGrapple(Vector3 retDir)
@@ -129,10 +133,19 @@ public class DrawLines : MonoBehaviour
     }
     public void stopGrappling()
     {
-        PlayerRB.useGravity = true;
+        //PlayerRB.useGravity = true;
         PlayerRB.AddForce(grappleDir.normalized * 4, ForceMode.Impulse);
         //Debug.Log("Stopping Grappling");
         grappling = false;
         Destroy(newLineGen);
+    }
+    public bool getGameStarted()
+    {
+        return gameStarted;
+    }
+    public void setGameStarted(bool status)
+    {
+        gameStarted = status;
+        Debug.Log(gameStarted);
     }
 }
