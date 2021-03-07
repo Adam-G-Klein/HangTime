@@ -61,6 +61,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5665445559989246338, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
+      propertyPath: m_TagString
+      value: Sphere
+      objectReference: {fileID: 0}
     - target: {fileID: 5665445559989246350, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -122,6 +126,10 @@ PrefabInstance:
     - target: {fileID: 5665445559989246338, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
       propertyPath: m_Name
       value: Sphere (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665445559989246338, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
+      propertyPath: m_TagString
+      value: Sphere
       objectReference: {fileID: 0}
     - target: {fileID: 5665445559989246350, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
       propertyPath: m_RootOrder
@@ -255,6 +263,10 @@ PrefabInstance:
     - target: {fileID: 5665445559989246338, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
       propertyPath: m_Name
       value: Sphere (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5665445559989246338, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
+      propertyPath: m_TagString
+      value: Sphere
       objectReference: {fileID: 0}
     - target: {fileID: 5665445559989246350, guid: 3244e729f0d5d9a42beadf7e61ad2e6d, type: 3}
       propertyPath: m_RootOrder

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Sphere
+  - PlayerFocus
   layers:
   - Default
   - TransparentFX

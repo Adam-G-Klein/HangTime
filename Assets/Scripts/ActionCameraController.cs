@@ -5,7 +5,7 @@ using UnityEngine;
 public class ActionCameraController : MonoBehaviour
 {
 
-    public Transform PlayerTransform;
+    public Transform focusTransform;
 
     private Vector3 cameraOffset;
 
@@ -18,7 +18,7 @@ public class ActionCameraController : MonoBehaviour
     private float angleOfRotation;
     void Start()
     {
-        cameraOffset = transform.position - PlayerTransform.position;
+        cameraOffset = transform.position - focusTransform.position;
         angleOfRotation = transform.eulerAngles.x;
     }
 
@@ -65,23 +65,23 @@ public class ActionCameraController : MonoBehaviour
             {
                 cameraOffset = camTurnAngleX * cameraOffset;
 
-                Vector3 newPos = PlayerTransform.position + cameraOffset;
+                Vector3 newPos = focusTransform.position + cameraOffset;
                 
                 //newPos = new Vector3(newPos.x, Mathf.Min(newPos.y, 12.5f - PlayerTransform.position.y), newPos.z);
                 transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
                 
-                transform.LookAt(PlayerTransform);
+                transform.LookAt(focusTransform);
             }
             else
             {
                 cameraOffset = camTurnAngleX * camTurnAngleY * cameraOffset;
 
-                Vector3 newPos = PlayerTransform.position + cameraOffset;
+                Vector3 newPos = focusTransform.position + cameraOffset;
                 
                 //newPos = new Vector3(newPos.x, Mathf.Min(newPos.y, 12.5f - PlayerTransform.position.y), newPos.z);
                 transform.position = Vector3.Slerp(transform.position, newPos, SmoothFactor);
                 
-                transform.LookAt(PlayerTransform);
+                transform.LookAt(focusTransform);
             }
 
             //Debug.Log(transform.eulerAngles.x);
